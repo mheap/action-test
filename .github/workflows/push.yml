@@ -1,0 +1,7 @@
+name: Artifact
+on: push
+jobs:
+  artifact:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: mheap/debug-artifact-action@master
