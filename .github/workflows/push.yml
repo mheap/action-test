@@ -4,4 +4,4 @@ jobs:
   artifact:
     runs-on: ubuntu-18.04
     steps:
-      - uses: mheap/debug-artifact@master
+      - uses: mheap/node14-action@master
