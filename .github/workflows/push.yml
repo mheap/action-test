@@ -4,4 +4,5 @@ jobs:
   artifact:
     runs-on: ubuntu-20.04
     steps:
+      - run: nvm use 14
       - uses: mheap/node14-action@master
