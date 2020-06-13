@@ -7,5 +7,5 @@ jobs:
       - run: |
           export NVM_DIR=$HOME/.nvm
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          nvm use 14
+          nvm install 14 && nvm use 14
       - uses: mheap/node14-action@master
