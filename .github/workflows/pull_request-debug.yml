@@ -4,7 +4,7 @@ on:
     types: [opened, synchronize, closed]
 jobs:
   output-debug:
-    runs-on: ubuntu-18.04
+    runs-on: windows-latest
     steps:
       - uses: mheap/github-action-explore-debug@master
         with:
