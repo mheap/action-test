@@ -4,6 +4,6 @@ on:
     types: [opened, synchronize, closed, labeled]
 jobs:
   output-debug:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: mheap/debug-artifact@master
