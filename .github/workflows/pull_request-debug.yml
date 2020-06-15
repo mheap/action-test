@@ -1,7 +1,7 @@
 name: Debug
 on:
   pull_request:
-    types: [opened, synchronize, closed]
+    types: [opened, synchronize, closed, labeled]
 jobs:
   output-debug:
     runs-on: windows-latest
