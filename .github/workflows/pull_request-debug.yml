@@ -6,6 +6,4 @@ jobs:
   output-debug:
     runs-on: windows-latest
     steps:
-      - uses: mheap/github-action-explore-debug@master
-        with:
-          jq_selector: ".pull_request"
+      - uses: mheap/debug-artifact@master
