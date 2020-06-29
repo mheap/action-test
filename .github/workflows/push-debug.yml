@@ -1,0 +1,7 @@
+name: Debug
+on: push
+jobs:
+  output-debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mheap/debug-artifact@master
