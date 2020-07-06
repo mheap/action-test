@@ -1,4 +1,4 @@
-name: Push + Release
+name: "Push + Release"
 on: push
 jobs:
   build-and-release:
@@ -7,8 +7,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - name: Run NPM test
-        runs: echo npm test
+        run: echo npm test
       - name: Release
-        runs: echo npm publish
+        run: echo npm publish
         if: github.ref == 'refs/heads/master'
 
