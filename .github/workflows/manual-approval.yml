@@ -28,7 +28,7 @@ jobs:
               description: "This PR needs manual approval"
             });
 
-            console.log(data);
+            console.log(context.payload.pull_request);
 
   approve:
     name: Approve PR
