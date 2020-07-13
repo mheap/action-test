@@ -1,9 +1,0 @@
-name: Debug
-on:
-  pull_request:
-    types: [opened, synchronize, closed, labeled]
-jobs:
-  output-debug:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: mheap/debug-artifact@master
