@@ -23,6 +23,8 @@ jobs:
               repo: context.repo.repo,
               sha: context.sha,
               state: "pending",
+              context: "manual-approval",
+              description: "This PR needs manual approval"
             });
 
   approve:
