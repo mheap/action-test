@@ -17,8 +17,9 @@ jobs:
       - uses: actions/github-script@v2
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
+          debug: true
           script: |
-            await github.repos.createStatus({
+            const data = await github.repos.createStatus({
               owner: context.repo.owner,
               repo: context.repo.repo,
               sha: context.sha,
@@ -26,6 +27,8 @@ jobs:
               context: "manual-approval",
               description: "This PR needs manual approval"
             });
+
+            console.log(data);
 
   approve:
     name: Approve PR
