@@ -40,7 +40,7 @@ jobs:
           script: |
             const pull_number = context.payload.inputs.pull_number;
 
-            const {data: pr} = github.pulls.get({
+            const {data: pr} = await github.pulls.get({
               ...context.repo,
               pull_number
             });
