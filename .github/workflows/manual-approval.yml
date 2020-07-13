@@ -19,16 +19,14 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           debug: true
           script: |
+            const sha = context.payload.pull_request.head.sha;
             const data = await github.repos.createStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              sha: context.sha,
+              ...context.repo,
+              sha,
               state: "pending",
               context: "manual-approval",
               description: "This PR needs manual approval"
             });
-
-            console.log(context.payload.pull_request);
 
   approve:
     name: Approve PR
