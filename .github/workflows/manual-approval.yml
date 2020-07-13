@@ -5,9 +5,10 @@ on:
       - opened
       - synchronize
   workflow_dispatch:
-    pull_number:
-      description: "Pull Request to approve"
-      required: true
+    inputs:
+      pull_number:
+        description: "Pull Request to approve"
+        required: true
 jobs:
   mark-pending:
     name: Mark PR as pending
