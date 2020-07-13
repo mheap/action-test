@@ -18,7 +18,6 @@ jobs:
       - uses: actions/github-script@v2
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
-          debug: true
           script: |
             const sha = context.payload.pull_request.head.sha;
             const data = await github.repos.createStatus({
@@ -34,5 +33,23 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch'
     steps:
-      - name: Hello world
-        run: echo "Job Approved"
+      - uses: actions/github-script@v2
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          actor: ${{ github.actor }}
+          script: |
+            const pull_number = context.payload.inputs.pull_number;
+
+            const {data: pr} = github.pulls.get({
+              ...context.repo,
+              pull_number
+            });
+            const sha = pr.head.sha;
+
+            const data = await github.repos.createStatus({
+              ...context.repo,
+              sha,
+              state: "success",
+              context: "manual-approval",
+              description: `Manual approval provided by ${core.getInput('actor')}`
+            });
