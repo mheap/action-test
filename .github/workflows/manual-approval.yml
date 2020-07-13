@@ -12,7 +12,7 @@ jobs:
   mark-pending:
     name: Mark PR as pending
     runs-on: ubuntu-latest
-    if: github.event == "pull_request"
+    if: github.event_name == "pull_request"
     steps:
       - uses: actions/github-script@v2
         with:
@@ -28,7 +28,7 @@ jobs:
   approve:
     name: Approve PR
     runs-on: ubuntu-latest
-    if: github.event == "workflow_dispatch"
+    if: github.event_name == "workflow_dispatch"
     steps:
       - name: Hello world
         run: echo "Job Approved"
