@@ -3,7 +3,7 @@ on:
   pull_request:
     types:
       - opened
-      - sychronize
+      - synchronize
   workflow_dispatch:
     pull_number:
       description: "Pull Request to approve"
