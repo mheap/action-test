@@ -1,0 +1,9 @@
+name: Push Test
+on: push
+jobs:
+  node-version:
+    name: node14
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello world
+        uses: mheap/node14-action@master
