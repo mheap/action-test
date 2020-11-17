@@ -1,3 +1,3 @@
 Manual
 
-Another2
+Another
