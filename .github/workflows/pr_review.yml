@@ -1,0 +1,11 @@
+name: PR Review
+on: pull_request_review
+jobs:
+  review:
+    name: node12
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug
+        uses: mheap/debug-artifact@v1
+      - name: Add Trailer
+        uses: mheap/reviewed-by-trailer-action@master
