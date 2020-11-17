@@ -8,4 +8,4 @@ jobs:
       - name: Debug
         uses: mheap/debug-artifact@v1
       - name: Add Trailer
-        uses: mheap/reviewed-by-trailer-action@master
+        uses: mheap/reviewed-by-trailer-action@main
