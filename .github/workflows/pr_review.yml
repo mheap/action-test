@@ -5,7 +5,5 @@ jobs:
     name: node12
     runs-on: ubuntu-latest
     steps:
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
       - name: Debug
         uses: mheap/debug-artifact@v1
