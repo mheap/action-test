@@ -9,6 +9,6 @@ jobs:
         uses: mheap/markdown-meta-action@main
         id: meta
         with:
-          file: ./my-post.md
+          file: ./foo.md
       - name: Use the value
         run: echo "${{ steps.meta.output.title }}"
