@@ -5,5 +5,10 @@ jobs:
     name: node14
     runs-on: ubuntu-latest
     steps:
-      - name: Hello world
-        uses: mheap/node14-action@master
+      - name: Markdown Meta
+        uses: mheap/markdown-meta-action@main
+        id: meta
+        with:
+          file: ./my-post.md
+      - name: Use the value
+        run: echo "${{ steps.meta.output.title }}"
