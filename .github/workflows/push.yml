@@ -13,4 +13,4 @@ jobs:
         with:
           file: ./foo.md
       - name: Use the value
-        run: echo "${{ steps.meta.output.title }}"
+        run: echo "${{ steps.meta.outputs.title }}"
