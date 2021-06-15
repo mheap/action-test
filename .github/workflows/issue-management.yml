@@ -1,0 +1,20 @@
+name: Issue Management
+on:
+  issues:
+    types: [opened, closed, reopened]
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  issue-management:
+    name: Issue Management
+    runs-on: ubuntu-latest
+    steps:
+      - name: Issue Management
+        uses: mheap/github-action-issue-management@label-sync
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          necromancer_delay: "P7D" # This can be any ISO8601 duration
+          disable_auto_assign: "on"
