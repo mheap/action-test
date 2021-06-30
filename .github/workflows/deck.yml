@@ -7,7 +7,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: mheap/setup-deck@v3
+      - uses: mheap/setup-deck@v4
         with:
           deck-version: 1.7.0
           wrapper: true
