@@ -7,12 +7,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: mheap/setup-deck@v11
+      - uses: mheap/setup-deck@v12
         with:
           deck-version: 1.7.0
           wrapper: true
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
       - run: deck version
         id: deck_version
       - run: echo '${{ toJson(steps.deck_version.outputs) }}'
