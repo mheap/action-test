@@ -10,7 +10,7 @@ jobs:
     name: Install Inso
     runs-on: ${{matrix.runner}}
     steps:
-      - uses: mheap/test-setup-inso@main
+      - uses: kong/setup-inso@v1
         with:
           inso-version: 2.4.0
           wrapper: true
