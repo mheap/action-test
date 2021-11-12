@@ -10,10 +10,7 @@ jobs:
     name: Install Inso
     runs-on: ${{matrix.runner}}
     steps:
-      - uses: kong/setup-inso@v1
+      - uses: mheap/setup-inso@v1
         with:
           inso-version: 2.4.0
-          wrapper: true
       - run: inso --version
-        id: inso_version
-      - run: echo '${{ toJson(steps.inso_version.outputs) }}'
