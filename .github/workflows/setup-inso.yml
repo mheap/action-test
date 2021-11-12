@@ -13,4 +13,7 @@ jobs:
       - uses: mheap/test-setup-inso@main
         with:
           inso-version: 2.4.0
+          wrapper: true
       - run: inso --version
+        id: inso_version
+      - run: echo '${{ toJson(steps.inso_version.outputs) }}'
