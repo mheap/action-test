@@ -1,0 +1,12 @@
+name: Inso
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    name: Install Inso
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mheap/test-setup-inso@main
+        with:
+          inso-version: 2.4.0
+      - run: inso --version
