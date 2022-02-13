@@ -1,5 +1,5 @@
 ---
-name: A test
+name: A test to trigger
 ---
 
 This is a test
