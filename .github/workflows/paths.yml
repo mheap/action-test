@@ -1,0 +1,14 @@
+name: Paths Test
+on:
+  push:
+    paths:
+      - 'mkdwn/**.md'
+jobs:
+  debug:
+    name: Debug
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug Artifacts
+        uses: mheap/debug-artifact@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
