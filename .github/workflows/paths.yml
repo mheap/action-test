@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Frontmatter JSON Schema Validator
-        uses: mheap/frontmatter-json-schema-action@main
+        uses: mheap/frontmatter-json-schema-action@v1
         with:
           paths: "mkdwn/*.md"
           schema: '{"type":"object","properties":{"title":{"type":"string"},"description":{"type":"string"}},"required":["title"],"additionalProperties":false}'
