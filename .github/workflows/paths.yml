@@ -8,6 +8,7 @@ jobs:
     name: Frontmatter JSON Schema Validator
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Frontmatter JSON Schema Validator
         uses: mheap/frontmatter-json-schema-action@main
         with:
