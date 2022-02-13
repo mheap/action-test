@@ -2,13 +2,14 @@ name: Paths Test
 on:
   push:
     paths:
-      - 'mkdwn/**.md'
+      - "mkdwn/**.md"
 jobs:
-  debug:
-    name: Debug
+  frontmatter-json-schema-validator:
+    name: Frontmatter JSON Schema Validator
     runs-on: ubuntu-latest
     steps:
-      - name: Debug Artifacts
-        uses: mheap/debug-artifact@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Frontmatter JSON Schema Validator
+        uses: mheap/frontmatter-json-schema-action@main
+        with:
+          paths: "mkdwn/*.md"
+          schema: '{"type":"object","properties":{"title":{"type":"string"},"description":{"type":"string"}},"required":["title"],"additionalProperties":false}'
