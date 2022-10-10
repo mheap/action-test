@@ -15,7 +15,7 @@ jobs:
         uses: peter-evans/find-comment@v2.0.0
         id: fc
         with:
-          issue-number: ${{ github.event.issue_comment.number }}
+          issue-number: ${{ github.event.issue.number }}
           comment-author: "github-actions[bot]"
           body-includes: "Documentation updated"
       - name: "Make comment (if necessary)"
