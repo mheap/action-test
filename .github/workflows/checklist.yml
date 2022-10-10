@@ -1,5 +1,5 @@
-name: 'PR Tasks Completed Check'
-on: 
+name: "PR Tasks Completed Check"
+on:
   pull_request:
     types: [opened, edited, synchronize]
   issues:
@@ -11,8 +11,16 @@ jobs:
     name: Make documentation comment on PR
     runs-on: ubuntu-latest
     steps:
+      - name: Find Comment
+        uses: peter-evans/find-comment@v1
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: "github-actions[bot]"
+          body-includes: "Documentation updated"
       - name: "Make comment (if necessary)"
         uses: actions/github-script@v4
+        if: steps.fc.outputs.comment-id == ''
         with:
           script: |
             github.issues.createComment({
@@ -29,6 +37,6 @@ jobs:
     steps:
       - uses: mheap/require-checklist-action@v1
         with:
-          requireChecklist: false 
+          requireChecklist: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
