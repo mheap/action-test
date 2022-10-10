@@ -1,8 +1,0 @@
-name: Deck
-on: push
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: kong/setup-deck@v1
-      - run: deck version

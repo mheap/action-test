@@ -1,0 +1,34 @@
+name: 'PR Tasks Completed Check'
+on: 
+  pull_request:
+    types: [opened, edited, synchronize]
+  issues:
+    types: [opened, edited, deleted]
+  issue_comment:
+    types: [created, edited, deleted]
+jobs:
+  review-checklist:
+    name: Make documentation comment on PR
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Make comment (if necessary)"
+        uses: actions/github-script@v4
+        with:
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `### Review Checklist
+            - [ ] Documentation updated`,
+            })
+  require_checklist_c:
+    name: "Require Checklist"
+    runs-on: ubuntu-latest
+    needs: [review-checklist]
+    steps:
+      - uses: mheap/require-checklist-action@v1
+        with:
+          requireChecklist: false 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
