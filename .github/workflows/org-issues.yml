@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Auto Close Org Issues
-        uses: mheap/github-action-readme@v1
+        uses: mheap/auto-close-org-issues-action@v1
         with:
           token: ${{ secrets.PAT }}
           org: Kong
