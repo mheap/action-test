@@ -1,0 +1,16 @@
+name: Auto Close Org Issues
+on:
+  issues:
+    types: [opened, reopened]
+
+jobs:
+  auto-close-org-issues:
+    name: Auto Close Org Issues
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto Close Org Issues
+        uses: mheap/github-action-readme@v1
+        with:
+          token: ${{ secrets.PAT }}
+          org: Kong
+          message: Thanks for raising an issue! For YOUR_ORG_NAME employees, we track issues in the ABC Jira project
