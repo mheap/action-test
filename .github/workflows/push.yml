@@ -1,0 +1,12 @@
+on: push
+jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: rspurgeon/setup-kced@v1
+        with:
+          kced-version: 0.1.11
+          wrapper: true
+      - run: kced version
+        id: kced_version
+      - run: echo '${{ toJson(steps.kced_version.outputs) }}'
