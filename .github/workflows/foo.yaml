@@ -1,0 +1,29 @@
+name: Run tests from fork
+on:
+  pull_request_target:
+    types: [opened, synchronize, labeled]
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    if: contains(github.event.*.labels.*.name, 'ci:run-tests')
+    steps:
+      - name: Check access
+        uses: "lannonbr/repo-permission-check-action@2.0.0"
+        with:
+          permission: "write"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{  github.event.pull_request.head.sha }} # This is dangerous without the first access check
+      - name: Run tests
+        run: |
+          if [[ "x${{ secrets.MY_SECRET }}" == "xval" ]]; then
+            echo "Access to secrets"
+          else
+            echo "No access to secrets"
+            exit 1
+          fi
+      - name: Remove label
+        run: gh pr edit ${{ github.event.pull_request.number }} --remove-label "ci:run-tests"
