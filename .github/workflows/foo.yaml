@@ -26,4 +26,6 @@ jobs:
             exit 1
           fi
       - name: Remove label
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: gh pr edit ${{ github.event.pull_request.number }} --remove-label "ci:run-tests"
