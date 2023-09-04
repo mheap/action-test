@@ -5,7 +5,7 @@ on:
 jobs:
   demo:
     runs-on: ubuntu-latest
-    if: contains(github.event.*.labels.*.name, 'ci:run-tests')
+    if: contains(fromJSON('["opened", "synchronize"]'), github.event.action) || github.event.action == 'labeled' && contains(github.event.*.labels.*.name, 'ci:run-tests')
     steps:
       - name: Check access
         uses: "lannonbr/repo-permission-check-action@2.0.0"
