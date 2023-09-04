@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     if: contains(fromJSON('["opened", "synchronize"]'), github.event.action) || github.event.action == 'labeled' && contains(github.event.*.labels.*.name, 'ci:run-tests')
     steps:
+      - uses: hmarr/debug-action@v2
       - name: Check access
         uses: "lannonbr/repo-permission-check-action@2.0.0"
         with:
