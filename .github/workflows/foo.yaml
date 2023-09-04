@@ -5,15 +5,22 @@ on:
 jobs:
   demo:
     runs-on: ubuntu-latest
-    if: contains(fromJSON('["opened", "synchronize"]'), github.event.action) || github.event.action == 'labeled' && contains(github.event.*.labels.*.name, 'ci:run-tests')
     steps:
       - uses: hmarr/debug-action@v2
-      - name: Check access
-        uses: "lannonbr/repo-permission-check-action@2.0.0"
+      - name: Get User Permission
+        id: checkAccess
+        uses: "actions-cool/check-user-permission@v2"
         with:
-          permission: "write"
+          require: write
+          username: ${{ github.triggering_actor }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check User Permission
+        if: steps.checkAccess.outputs.check-result == 'false'
+        run: |
+          echo "${{ github.triggering_actor }} does not have permissions on this repo" }}"
+          echo "Job originally triggered by ${{ github.actor }}"
+          exit 1
       - name: Checkout code
         uses: actions/checkout@v3
         with:
